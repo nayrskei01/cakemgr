@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.waracle</groupId>
 	<artifactId>cakemgr</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>cakemgr</name>
 	<description>POC project for cake manager</description>
 	<properties>
