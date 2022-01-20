@@ -32,15 +32,15 @@ public class CakeControllerTest
 	public void testSaveCakesFromJsonFile_returnResponseEntity()
 	{
 		//given
-		ResponseEntity setReponse = new ResponseEntity("Saving cakes from cake json url.", HttpStatus.OK);
-		given(cakeController.saveCakesFromJsonFile()).willReturn(setReponse);
+		ResponseEntity setResponse = new ResponseEntity("Saving cakes from cake json url.", HttpStatus.OK);
+		given(cakeController.saveCakesFromJsonFile()).willReturn(setResponse);
 		
 		//when
 		ResponseEntity response = cakeController.saveCakesFromJsonFile();
 		
 		//then
-		then(response.getBody()).isEqualTo(setReponse.getBody());
-		then(response.getStatusCode()).isEqualTo(setReponse.getStatusCode());
+		then(response.getBody()).isEqualTo(setResponse.getBody());
+		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
 	
 	@Test
@@ -48,15 +48,15 @@ public class CakeControllerTest
 	{
 		//given
 		CakeDTO cakeDto = cakeDetailsDTO();
-		ResponseEntity setReponse = new ResponseEntity(cakeDto, HttpStatus.OK);
-		given(cakeController.saveCake(cakeDto)).willReturn(setReponse);
+		ResponseEntity setResponse = new ResponseEntity(cakeDto, HttpStatus.OK);
+		given(cakeController.saveCake(cakeDto)).willReturn(setResponse);
 		
 		//when
 		ResponseEntity response = cakeController.saveCake(cakeDto);
 		
 		//then
-		then(response.getBody()).isEqualTo(setReponse.getBody());
-		then(response.getStatusCode()).isEqualTo(setReponse.getStatusCode());
+		then(response.getBody()).isEqualTo(setResponse.getBody());
+		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
 	
 	@Test
@@ -68,15 +68,15 @@ public class CakeControllerTest
 		message.add("The description is mandatory field.");
 		message.add("The image is mandatory field.");
 		CakeDTO cakeDto = null;
-		ResponseEntity setReponse = new ResponseEntity(message, HttpStatus.BAD_REQUEST);
-		given(cakeController.saveCake(cakeDto)).willReturn(setReponse);
+		ResponseEntity setResponse = new ResponseEntity(message, HttpStatus.BAD_REQUEST);
+		given(cakeController.saveCake(cakeDto)).willReturn(setResponse);
 		
 		//when
 		ResponseEntity response = cakeController.saveCake(cakeDto);
 		
 		//then
-		then(response.getBody()).isEqualTo(setReponse.getBody());
-		then(response.getStatusCode()).isEqualTo(setReponse.getStatusCode());
+		then(response.getBody()).isEqualTo(setResponse.getBody());
+		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
 	
 	@Test
