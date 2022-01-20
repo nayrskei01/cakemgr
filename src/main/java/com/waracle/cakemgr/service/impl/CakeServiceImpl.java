@@ -5,7 +5,9 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 import org.slf4j.Logger;
@@ -31,12 +33,21 @@ public class CakeServiceImpl implements CakeService
 {
 	private static final Logger logger = LoggerFactory.getLogger(CakeServiceImpl.class);
 	
+	/**
+	 * Cake json url.
+	 */
 	@Value("${waracle.cake.url}")
 	private String cake_url;
 	
+	/**
+	 * Repository for CakeEntity.
+	 */
 	@Autowired
 	private CakeRepository cakeRepository;
 	
+	/**
+	 * Cake utilities.
+	 */
 	@Autowired
 	private CakeUtils cakeUtils;
 	
@@ -70,8 +81,15 @@ public class CakeServiceImpl implements CakeService
 	@Override
 	public CakeDTO getCakeById(Integer id)
 	{
+		CakeDTO cakeDto = null;
 		logger.info("Fetch cake by ID = " + id);
-		return cakeUtils.convertEntityToDTO(cakeRepository.findById(id).orElse(null));
+		Optional<CakeEntity> cake = cakeRepository.findById(id);
+		
+		if (cake.isPresent())
+		{
+			cakeDto = cakeUtils.convertEntityToDTO(cake.get());
+		}
+		return cakeDto;
 	}
 
 	/**
@@ -81,9 +99,17 @@ public class CakeServiceImpl implements CakeService
 	 */
 	@Override
 	public List<CakeDTO> getAllcakes()
-	{
+	{	
+		List<CakeDTO> cakesDto = new ArrayList<>();
+		
 		logger.info("Fetching all cakes from Employee DB");
-		return cakeUtils.convertListEntityToDTO(cakeRepository.findAll());
+		List<CakeEntity> cakes = cakeRepository.findAll();
+		
+		if (!cakes.isEmpty())
+		{
+			cakesDto = cakeUtils.convertListEntityToDTO(cakes);
+		}
+		return cakesDto;
 	}
 	
 	/**

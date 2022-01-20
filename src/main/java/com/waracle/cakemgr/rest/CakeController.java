@@ -66,15 +66,24 @@ public class CakeController
 	{
 		List<CakeDTO> response = cakeService.getAllcakes();
 		
+		if (response.isEmpty())
+		{
+			return new ResponseEntity("Empty cakes!", HttpStatus.BAD_REQUEST);
+		}
+		
 		return new ResponseEntity(response, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value = "/cake/{id}",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<CakeDTO> displayCakeById(@PathVariable Integer id) throws BindException
+	public ResponseEntity<CakeDTO> displayCakeById(@PathVariable Integer id)
 	{
 		CakeDTO response = cakeService.getCakeById(id);
+		if (null == response)
+		{
+			return new ResponseEntity("Cannot find cake with ID", HttpStatus.BAD_REQUEST);
+		}
 		return new ResponseEntity(response, HttpStatus.OK);
 	}
 

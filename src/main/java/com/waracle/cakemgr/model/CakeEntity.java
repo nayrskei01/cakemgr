@@ -18,22 +18,34 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "Cakes", uniqueConstraints 
+@Table(name = "Employee", uniqueConstraints 
 	= {@UniqueConstraint(columnNames = "ID"),
 			@UniqueConstraint(columnNames = "EMAIL")})
 public class CakeEntity
 {
+	/**
+	 * Cake identification field.
+	 */
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", unique = true, nullable = false)
     private Integer employeeId;
 
+	/**
+	 * Cake title field.
+	 */
     @Column(name = "EMAIL", unique = false, nullable = false, length = 100)
     private String title;
 
+    /**
+     * Cake description field.
+     */
     @Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
     private String desc;
 
+    /**
+     * Cake image url field.
+     */
     @Column(name = "LAST_NAME", unique = false, nullable = false, length = 300)
     private String image;
 }
