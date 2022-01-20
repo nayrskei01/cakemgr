@@ -11,8 +11,7 @@ import com.waracle.cakemgr.dto.CakeDTO;
 import com.waracle.cakemgr.model.CakeEntity;
 
 @Component
-public class CakeUtils
-{
+public class CakeUtils {
 	@Autowired
 	private ModelMapper mapper;
 	
@@ -22,8 +21,7 @@ public class CakeUtils
 	 * @param cake
 	 * @return cakeDto details
 	 */
-	public CakeDTO convertEntityToDTO(CakeEntity cake)
-	{
+	public CakeDTO convertEntityToDTO(CakeEntity cake) {
 		return mapper.map(cake, CakeDTO.class);
 	}
 	
@@ -33,8 +31,7 @@ public class CakeUtils
 	 * @param cakes
 	 * @return list of CakeDTO
 	 */
-	public List<CakeDTO> convertListEntityToDTO(List<CakeEntity> cakes)
-	{
+	public List<CakeDTO> convertListEntityToDTO(List<CakeEntity> cakes) {
 		return cakes.stream().map(cake -> convertEntityToDTO(cake)).collect(Collectors.toList());
 	}
 
@@ -44,8 +41,7 @@ public class CakeUtils
 	 * @param cakeDto
 	 * @return CakeEntity details
 	 */
-	public CakeEntity convertCakeDTOToEntity(CakeDTO cakeDto)
-	{
+	public CakeEntity convertCakeDTOToEntity(CakeDTO cakeDto) {
 		return mapper.map(cakeDto, CakeEntity.class);
 	}
 }

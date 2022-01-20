@@ -21,8 +21,7 @@ import com.waracle.cakemgr.validator.validation.CakeFieldValidationMessage;
 import com.waracle.cakemgr.validator.validation.CakeValidator;
 
 @RestController
-public class CakeController
-{
+public class CakeController {
 	@Autowired
 	private CakeService cakeService;
 	
@@ -32,8 +31,7 @@ public class CakeController
 	@RequestMapping(value = "/cakes",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> saveCakesFromJsonFile()
-	{
+	public ResponseEntity<?> saveCakesFromJsonFile() {
 		cakeService.saveJsonFile();
 		return new ResponseEntity("Saving cakes from cake json url.", HttpStatus.OK);
 	}
@@ -42,8 +40,7 @@ public class CakeController
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<List<CakeFieldValidationMessage>> saveCake(@RequestBody CakeDTO cakeDto) throws BindException
-	{
+	public ResponseEntity<List<CakeFieldValidationMessage>> saveCake(@RequestBody CakeDTO cakeDto) throws BindException {
 		CakeValidator validator = new CakeValidator();
 		
 		WebDataBinder binder = new WebDataBinder(cakeDto);
@@ -62,12 +59,10 @@ public class CakeController
 	@RequestMapping(value = "/",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<List<CakeDTO>> displayAllCakes()
-	{
+	public ResponseEntity<List<CakeDTO>> displayAllCakes() {
 		List<CakeDTO> response = cakeService.getAllcakes();
 		
-		if (response.isEmpty())
-		{
+		if (response.isEmpty()) {
 			return new ResponseEntity("Empty cakes!", HttpStatus.BAD_REQUEST);
 		}
 		
@@ -77,14 +72,11 @@ public class CakeController
 	@RequestMapping(value = "/cake/{id}",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<CakeDTO> displayCakeById(@PathVariable Integer id)
-	{
+	public ResponseEntity<CakeDTO> displayCakeById(@PathVariable Integer id) {
 		CakeDTO response = cakeService.getCakeById(id);
-		if (null == response)
-		{
+		if (null == response) {
 			return new ResponseEntity("Cannot find cake with ID", HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity(response, HttpStatus.OK);
 	}
-
 }

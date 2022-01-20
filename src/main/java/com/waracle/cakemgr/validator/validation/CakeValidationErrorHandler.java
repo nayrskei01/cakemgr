@@ -12,8 +12,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 @RestControllerAdvice
-public class CakeValidationErrorHandler extends ResponseEntityExceptionHandler
-{
+public class CakeValidationErrorHandler extends ResponseEntityExceptionHandler {
 	/**
 	 * Controller advice.  
 	 * 
@@ -27,8 +26,7 @@ public class CakeValidationErrorHandler extends ResponseEntityExceptionHandler
 			final BindException validationException,
 			final HttpHeaders headers,
 			final HttpStatus status,
-			final WebRequest request)
-	{
+			final WebRequest request) {
 		List<CakeFieldValidationMessage> validationErrors = 
 				validationException
 				.getBindingResult()

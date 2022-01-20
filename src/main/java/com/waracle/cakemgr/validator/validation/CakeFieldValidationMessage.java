@@ -5,7 +5,6 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class CakeFieldValidationMessage
-{
+public class CakeFieldValidationMessage {
 	private String message;
 }

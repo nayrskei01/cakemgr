@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CakeDTO
-{
+public class CakeDTO {
 	/**
 	 * Cake identification field.
 	 */

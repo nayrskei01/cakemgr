@@ -10,8 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import com.waracle.cakemgr.model.CakeEntity;
 
 @DataJpaTest
-public class CakeRepositoryTest
-{
+public class CakeRepositoryTest {
 	@Autowired
 	private CakeRepository cakeRepository;
 	
@@ -19,8 +18,7 @@ public class CakeRepositoryTest
 	private TestEntityManager testEntityManager;
 	
 	@Test
-	void testGetEmployee_returnEmployeeDetails()
-	{
+	void testGetEmployee_returnEmployeeDetails() {
 		//given
 		CakeEntity saveCake = CakeEntity.builder()
 				.title("Lemon cheesecake")

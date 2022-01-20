@@ -5,42 +5,35 @@ import org.springframework.validation.Validator;
 
 import com.waracle.cakemgr.dto.CakeDTO;
 
-public class CakeValidator implements Validator
-{
+public class CakeValidator implements Validator {
 
 	@Override
-	public boolean supports(Class<?> clazz)
-	{
+	public boolean supports(Class<?> clazz) {
 		return CakeDTO.class.isAssignableFrom(clazz);
 	}
 
 	@Override
-	public void validate(Object cakeObject, Errors errors)
-	{
+	public void validate(Object cakeObject, Errors errors) {
 		CakeDTO cakeDto = (CakeDTO) cakeObject;
 		CakeFieldValidationMessage message = null;
 		
-		if (isEmpty(cakeDto.getTitle()))
-		{
+		if (isEmpty(cakeDto.getTitle())) {
 			message = new CakeFieldValidationMessage("The title is mandatory field.");
 			errors.rejectValue("title", null, message.getMessage());
 		}
 		
-		if (isEmpty(cakeDto.getDesc()))
-		{
+		if (isEmpty(cakeDto.getDesc())) {
 			message = new CakeFieldValidationMessage("The description is mandatory field.");
 			errors.rejectValue("desc", null, message.getMessage());
 		}
 		
-		if (isEmpty(cakeDto.getImage()))
-		{
+		if (isEmpty(cakeDto.getImage())) {
 			message = new CakeFieldValidationMessage("The image is mandatory field.");
 			errors.rejectValue("image", null, message.getMessage());
 		}
 	}
 	
-	private boolean isEmpty(String value)
-	{
+	private boolean isEmpty(String value) {
 		return null == value || value.length() == 0;
 	}
 

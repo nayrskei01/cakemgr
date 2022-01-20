@@ -21,8 +21,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "Employee", uniqueConstraints 
 	= {@UniqueConstraint(columnNames = "ID"),
 			@UniqueConstraint(columnNames = "EMAIL")})
-public class CakeEntity
-{
+public class CakeEntity {
 	/**
 	 * Cake identification field.
 	 */
@@ -34,7 +33,7 @@ public class CakeEntity
 	/**
 	 * Cake title field.
 	 */
-    @Column(name = "EMAIL", unique = false, nullable = false, length = 100)
+    @Column(name = "EMAIL", unique = true, nullable = false, length = 100)
     private String title;
 
     /**

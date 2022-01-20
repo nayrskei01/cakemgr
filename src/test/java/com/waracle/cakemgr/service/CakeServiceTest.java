@@ -19,19 +19,16 @@ import com.waracle.cakemgr.dto.CakeDTO;
 import com.waracle.cakemgr.model.CakeEntity;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CakeServiceTest
-{
+public class CakeServiceTest {
 	private CakeService cakeService;
 	
 	@Before
-	public void setup()
-	{
+	public void setup() {
 		cakeService = mock(CakeService.class);
 	}
 	
 	@Test
-	public void testSaveCake_returnCakeDeteails()
-	{
+	public void testSaveCake_returnCakeDeteails() {
 		//given
 		CakeEntity saveCake = cakeDetails();
 		CakeDTO cakeDto = cakeDetailsDTO();
@@ -48,8 +45,7 @@ public class CakeServiceTest
 	}
 	
 	@Test
-	public void testgetCakeById_returnCakeDetails()
-	{
+	public void testgetCakeById_returnCakeDetails() {
 		//given
 		CakeEntity saveCake = cakeDetails();
 		saveCake.setEmployeeId(1);
@@ -67,8 +63,7 @@ public class CakeServiceTest
 	}
 	
 	@Test
-	public void getAllCakes_returnListOfCakesDetails()
-	{
+	public void getAllCakes_returnListOfCakesDetails() {
 		//given
 		List<CakeEntity> saveCake = new ArrayList<>();
 		saveCake.add(cakeDetails());
@@ -86,8 +81,7 @@ public class CakeServiceTest
 		then(responseCake.get(0).getImage()).isEqualTo(saveCake.get(0).getImage());
 	}
 	
-	private CakeEntity cakeDetails()
-	{
+	private CakeEntity cakeDetails() {
 		return CakeEntity.builder()
 				.title("Lemon cheesecake")
 				.desc("A cheesecake made of lemon")
@@ -95,8 +89,7 @@ public class CakeServiceTest
 				.build();
 	}
 	
-	private CakeDTO cakeDetailsDTO()
-	{
+	private CakeDTO cakeDetailsDTO() {
 		return CakeDTO.builder()
 				.employeeId(1)
 				.title("Lemon cheesecake")

@@ -18,19 +18,16 @@ import org.springframework.validation.BindException;
 import com.waracle.cakemgr.dto.CakeDTO;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CakeControllerTest
-{
+public class CakeControllerTest {
 	private CakeController cakeController;
 	
 	@Before
-	public void setup()
-	{
+	public void setup() {
 		cakeController = mock(CakeController.class);
 	}
 	
 	@Test
-	public void testSaveCakesFromJsonFile_returnResponseEntity()
-	{
+	public void testSaveCakesFromJsonFile_returnResponseEntity() {
 		//given
 		ResponseEntity setResponse = new ResponseEntity("Saving cakes from cake json url.", HttpStatus.OK);
 		given(cakeController.saveCakesFromJsonFile()).willReturn(setResponse);
@@ -44,8 +41,7 @@ public class CakeControllerTest
 	}
 	
 	@Test
-	public void testSaveCake_returnCakeDTODetails() throws BindException
-	{
+	public void testSaveCake_returnCakeDTODetails() throws BindException {
 		//given
 		CakeDTO cakeDto = cakeDetailsDTO();
 		ResponseEntity setResponse = new ResponseEntity(cakeDto, HttpStatus.OK);
@@ -60,8 +56,7 @@ public class CakeControllerTest
 	}
 	
 	@Test
-	public void testSaveCake_returnBadRequest() throws BindException
-	{
+	public void testSaveCake_returnBadRequest() throws BindException {
 		//given
 		List<String> message = new ArrayList<>();
 		message.add("The title is mandatory field.");
@@ -80,8 +75,7 @@ public class CakeControllerTest
 	}
 	
 	@Test
-	public void testDisplayAllCakes_returnBadRequest()
-	{
+	public void testDisplayAllCakes_returnBadRequest() {
 		//given
 		ResponseEntity setResponse = new ResponseEntity("Empty cakes!", HttpStatus.BAD_REQUEST);
 		given(cakeController.displayAllCakes()).willReturn(setResponse);
@@ -95,8 +89,7 @@ public class CakeControllerTest
 	}
 	
 	@Test
-	public void testDisplayAllCakes_returnListCakeDTODetails()
-	{
+	public void testDisplayAllCakes_returnListCakeDTODetails() {
 		//given
 		List<CakeDTO> cakeList = new ArrayList<>();
 		cakeList.add(cakeDetailsDTO());
@@ -112,8 +105,7 @@ public class CakeControllerTest
 	}
 	
 	@Test
-	public void testDisplayCakeById_returnBadRequest()
-	{
+	public void testDisplayCakeById_returnBadRequest() {
 		//given
 		ResponseEntity setResponse = new ResponseEntity("Cannot find cake with ID", HttpStatus.BAD_REQUEST);
 		given(cakeController.displayCakeById(1)).willReturn(setResponse);
@@ -127,8 +119,7 @@ public class CakeControllerTest
 	}
 	
 	@Test
-	public void testDisplayCakeById_returnCakeDTODetails()
-	{
+	public void testDisplayCakeById_returnCakeDTODetails() {
 		//given
 		CakeDTO cakeDto = cakeDetailsDTO();
 		ResponseEntity setResponse = new ResponseEntity(cakeDto, HttpStatus.OK);
@@ -142,8 +133,7 @@ public class CakeControllerTest
 		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
 	
-	private CakeDTO cakeDetailsDTO()
-	{
+	private CakeDTO cakeDetailsDTO() {
 		return CakeDTO.builder()
 				.title("Lemon cheesecake")
 				.desc("A cheesecake made of lemon")

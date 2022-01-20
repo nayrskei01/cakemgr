@@ -5,8 +5,7 @@ import java.util.List;
 import com.waracle.cakemgr.dto.CakeDTO;
 import com.waracle.cakemgr.model.CakeEntity;
 
-public interface CakeService
-{
+public interface CakeService {
 
 	CakeDTO saveCake(CakeEntity saveCake);
 
