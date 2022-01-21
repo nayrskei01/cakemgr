@@ -18,15 +18,25 @@ import com.waracle.cakemgr.model.CakeEntity;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CakeServiceTest {
+
+	/**
+	 * Cake service.
+	 */
 	private CakeService cakeService;
-	
+
+	/**
+	 * Setup CakeService.
+	 */
 	@Before
 	public void setup() {
 		cakeService = mock(CakeService.class);
 	}
-	
+
+	/**
+	 * Test for saving CakeEntity.
+	 */
 	@Test
-	public void testSaveCake_returnCakeDeteails() {
+	public void testSaveCake_returnCakeDetails() {
 		//given
 		CakeEntity saveCake = cakeDetails();
 		CakeDTO cakeDto = cakeDetailsDTO();
@@ -37,13 +47,16 @@ public class CakeServiceTest {
 		
 		//then
 		then(responseCake).isNotNull();
-		then(responseCake.getTitle()).isEqualTo("Lemon cheesecake");
-		then(responseCake.getDesc()).isEqualTo("A cheesecake made of lemon");
-		then(responseCake.getImage()).isEqualTo("https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg");
+		then(responseCake.getTitle()).isEqualTo(saveCake.getTitle());
+		then(responseCake.getDesc()).isEqualTo(saveCake.getDesc());
+		then(responseCake.getImage()).isEqualTo(saveCake.getImage());
 	}
-	
+
+	/**
+	 * Test for getting the CakeDetails by id.
+	 */
 	@Test
-	public void testgetCakeById_returnCakeDetails() {
+	public void testGetCakeById_returnCakeDetails() {
 		//given
 		CakeEntity saveCake = cakeDetails();
 		saveCake.setEmployeeId(1);
@@ -59,9 +72,12 @@ public class CakeServiceTest {
 		then(responseCake.getDesc()).isEqualTo(saveCake.getDesc());
 		then(responseCake.getImage()).isEqualTo(saveCake.getImage());
 	}
-	
+
+	/**
+	 * Test get all cakes.
+	 */
 	@Test
-	public void getAllCakes_returnListOfCakesDetails() {
+	public void testGetAllCakes_returnListOfCakesDetails() {
 		//given
 		List<CakeEntity> saveCake = new ArrayList<>();
 		saveCake.add(cakeDetails());
@@ -83,7 +99,9 @@ public class CakeServiceTest {
 		return CakeEntity.builder()
 				.title("Lemon cheesecake")
 				.desc("A cheesecake made of lemon")
-				.image("https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
+				.image("https://s3-eu-west-1.amazonaws" +
+						".com/s3.mediafileserver.co.uk/carnation" +
+						"/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
 				.build();
 	}
 	
@@ -92,7 +110,9 @@ public class CakeServiceTest {
 				.employeeId(1)
 				.title("Lemon cheesecake")
 				.desc("A cheesecake made of lemon")
-				.image("https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
+				.image("https://s3-eu-west-1.amazonaws" +
+						".com/s3.mediafileserver.co.uk/carnation" +
+						"/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
 				.build();
 	}
 }

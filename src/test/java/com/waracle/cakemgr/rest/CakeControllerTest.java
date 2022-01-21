@@ -19,27 +19,45 @@ import com.waracle.cakemgr.dto.CakeDTO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CakeControllerTest {
+
+	/**
+	 * Cake controller.
+	 */
 	private CakeController cakeController;
-	
+
+	/**
+	 * Setup CakeController.
+	 */
 	@Before
 	public void setup() {
 		cakeController = mock(CakeController.class);
 	}
-	
+
+	/**
+	 * Test to save cakes by json url.
+	 */
 	@Test
 	public void testSaveCakesFromJsonFile_returnResponseEntity() {
 		//given
-		ResponseEntity setResponse = new ResponseEntity("Saving cakes from cake json url.", HttpStatus.OK);
-		given(cakeController.saveCakesFromJsonFile()).willReturn(setResponse);
+		ResponseEntity setResponse = new ResponseEntity(
+				"Saving cakes from cake json url.", HttpStatus.OK);
+		given(cakeController.saveCakesFromJsonFile())
+				.willReturn(setResponse);
 		
 		//when
 		ResponseEntity response = cakeController.saveCakesFromJsonFile();
 		
 		//then
 		then(response.getBody()).isEqualTo(setResponse.getBody());
-		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
+		then(response.getStatusCode())
+				.isEqualTo(setResponse.getStatusCode());
 	}
-	
+
+	/**
+	 * Test to save cakes with response 200.
+	 *
+	 * @throws BindException
+	 */
 	@Test
 	public void testSaveCake_returnCakeDTODetails() throws BindException {
 		//given
@@ -54,7 +72,12 @@ public class CakeControllerTest {
 		then(response.getBody()).isEqualTo(setResponse.getBody());
 		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
-	
+
+	/**
+	 * Test to save cakes with response 400.
+	 *
+	 * @throws BindException
+	 */
 	@Test
 	public void testSaveCake_returnBadRequest() throws BindException {
 		//given
@@ -73,7 +96,10 @@ public class CakeControllerTest {
 		then(response.getBody()).isEqualTo(setResponse.getBody());
 		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
-	
+
+	/**
+	 * Test to display list of Cakes data with 400 response.
+	 */
 	@Test
 	public void testDisplayAllCakes_returnBadRequest() {
 		//given
@@ -87,7 +113,10 @@ public class CakeControllerTest {
 		then(response.getBody()).isEqualTo(setResponse.getBody());
 		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
-	
+
+	/**
+	 * Test to display list of Cakes data with 200 response.
+	 */
 	@Test
 	public void testDisplayAllCakes_returnListCakeDTODetails() {
 		//given
@@ -103,11 +132,15 @@ public class CakeControllerTest {
 		then(response.getBody()).isEqualTo(setResponse.getBody());
 		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
-	
+
+	/**
+	 * Test to display Cake data by Id with 400 response.
+	 */
 	@Test
 	public void testDisplayCakeById_returnBadRequest() {
 		//given
-		ResponseEntity setResponse = new ResponseEntity("Cannot find cake with ID", HttpStatus.BAD_REQUEST);
+		ResponseEntity setResponse = new ResponseEntity(
+				"Cannot find cake with ID", HttpStatus.BAD_REQUEST);
 		given(cakeController.displayCakeById(1)).willReturn(setResponse);
 		
 		//when
@@ -117,7 +150,10 @@ public class CakeControllerTest {
 		then(response.getBody()).isEqualTo(setResponse.getBody());
 		then(response.getStatusCode()).isEqualTo(setResponse.getStatusCode());
 	}
-	
+
+	/**
+	 * Test to display Cake data by Id with 200 response.
+	 */
 	@Test
 	public void testDisplayCakeById_returnCakeDTODetails() {
 		//given
@@ -137,7 +173,9 @@ public class CakeControllerTest {
 		return CakeDTO.builder()
 				.title("Lemon cheesecake")
 				.desc("A cheesecake made of lemon")
-				.image("https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
+				.image("https://s3-eu-west-1.amazonaws.com" +
+						"/s3.mediafileserver.co.uk/carnation" +
+						"/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
 				.build();
 	}
 }

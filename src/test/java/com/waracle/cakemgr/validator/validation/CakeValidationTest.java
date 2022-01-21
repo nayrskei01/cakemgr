@@ -21,24 +21,39 @@ import com.waracle.cakemgr.dto.CakeDTO;
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureMockMvc
-public class CakeValidationTest
-{
+public class CakeValidationTest {
+
+	/**
+	 * MockMvc.
+	 */
 	@Autowired
 	private MockMvc mockMvc;
-	
+
+	/**
+	 * Object mapper.
+	 */
 	private ObjectMapper objectMapper = new ObjectMapper();
-	
+
+	/**
+	 * Validator test the error response in every field.
+	 *
+	 * @throws Exception
+	 */
 	@Test
-	public void testSetMessage_returnErrorMessage() throws Exception
-	{
-		CakeDTO cakeDto = CakeDTO.builder().title(null).desc(null).image(null).build();
+	public void testSetMessage_returnErrorMessage()
+			throws Exception {
+		CakeDTO cakeDto = CakeDTO.builder()
+				.title(null).desc(null).image(null).build();
 		
 		mockMvc.perform(post("/addCake")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(cakeDto)))
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$[0].message").value("The title is mandatory field."))
-				.andExpect(jsonPath("$[1].message").value("The description is mandatory field."))
-				.andExpect(jsonPath("$[2].message").value("The image is mandatory field."));
+				.andExpect(jsonPath("$[0].message")
+						.value("The title is mandatory field."))
+				.andExpect(jsonPath("$[1].message")
+						.value("The description is mandatory field."))
+				.andExpect(jsonPath("$[2].message")
+						.value("The image is mandatory field."));
 	}
 }

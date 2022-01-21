@@ -18,13 +18,23 @@ import com.waracle.cakemgr.model.CakeEntity;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CakeUtilsTest {
-	CakeUtils cakeUtils;
-	
+
+	/**
+	 * Cake utilities.
+	 */
+	private CakeUtils cakeUtils;
+
+	/**
+	 * Setup cake utilities.
+	 */
 	@Before
 	public void setup() {
 		cakeUtils = mock(CakeUtils.class);
 	}
-	
+
+	/**
+	 * Test for converting CakeEntity to CakeDTO.
+	 */
 	@Test
 	public void testConvertEntityToDTO_returnDTODetails() {
 		//given
@@ -41,7 +51,10 @@ public class CakeUtilsTest {
 		then(responseDto.getDesc()).isEqualTo(cakeEntity.getDesc());
 		then(responseDto.getImage()).isEqualTo(cakeEntity.getImage());
 	}
-	
+
+	/**
+	 * Test for converting list CakeEntity to list of CakeDTO.
+	 */
 	@Test
 	public void testConvertListEntityToDTO_returnListDTODetails() {
 		//given
@@ -60,7 +73,10 @@ public class CakeUtilsTest {
 		then(responseCakeList.get(0).getDesc()).isEqualTo(cakeList.get(0).getDesc());
 		then(responseCakeList.get(0).getImage()).isEqualTo(cakeList.get(0).getImage());
 	}
-	
+
+	/**
+	 * Test for converting CakeDTO to CakeEntity.
+	 */
 	@Test
 	public void testConvertCakeDTOToEntity_returnCakeEntityDetails() {
 		//given
@@ -82,7 +98,9 @@ public class CakeUtilsTest {
 		return CakeEntity.builder()
 				.title("Lemon cheesecake")
 				.desc("A cheesecake made of lemon")
-				.image("https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
+				.image("https://s3-eu-west-1.amazonaws.com/s3" +
+						".mediafileserver.co.uk/carnation" +
+						"/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
 				.build();
 	}
 	
@@ -91,7 +109,9 @@ public class CakeUtilsTest {
 				.employeeId(1)
 				.title("Lemon cheesecake")
 				.desc("A cheesecake made of lemon")
-				.image("https://s3-eu-west-1.amazonaws.com/s3.mediafileserver.co.uk/carnation/WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
+				.image("https://s3-eu-west-1.amazonaws" +
+						".com/s3.mediafileserver.co.uk/carnation/" +
+						"WebFiles/RecipeImages/lemoncheesecake_lg.jpg")
 				.build();
 	}
 }
