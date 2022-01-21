@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class CakemgrApplication {
-
 	/**
 	 * Entry point for the Application.
 	 *

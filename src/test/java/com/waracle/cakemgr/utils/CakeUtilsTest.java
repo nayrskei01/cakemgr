@@ -18,7 +18,6 @@ import com.waracle.cakemgr.model.CakeEntity;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CakeUtilsTest {
-
 	/**
 	 * Cake utilities.
 	 */

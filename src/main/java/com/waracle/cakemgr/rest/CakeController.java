@@ -22,7 +22,6 @@ import com.waracle.cakemgr.validator.validation.CakeValidator;
 
 @RestController
 public class CakeController {
-
 	/**
 	 * Cake service.
 	 */

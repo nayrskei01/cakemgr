@@ -19,7 +19,6 @@ import com.waracle.cakemgr.dto.CakeDTO;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CakeControllerTest {
-
 	/**
 	 * Cake controller.
 	 */

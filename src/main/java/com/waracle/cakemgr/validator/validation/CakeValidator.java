@@ -6,7 +6,6 @@ import org.springframework.validation.Validator;
 import com.waracle.cakemgr.dto.CakeDTO;
 
 public class CakeValidator implements Validator {
-
 	/**
 	 * Initialize class.
 	 *

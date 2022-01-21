@@ -12,7 +12,6 @@ import com.waracle.cakemgr.model.CakeEntity;
 
 @Component
 public class CakeUtils {
-
 	/**
 	 * Model mapper.
 	 */

@@ -13,7 +13,6 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 @Configuration
 public class AuthorizationServerConfig
     extends AuthorizationServerConfigurerAdapter {
-
 	/**
 	 * Configure for security.
 	 *

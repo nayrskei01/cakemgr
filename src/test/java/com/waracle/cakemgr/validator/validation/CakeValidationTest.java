@@ -22,7 +22,6 @@ import com.waracle.cakemgr.dto.CakeDTO;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @AutoConfigureMockMvc
 public class CakeValidationTest {
-
 	/**
 	 * MockMvc.
 	 */
