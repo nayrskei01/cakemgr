@@ -58,9 +58,9 @@ public class CakeUtilsTest {
 	@Test
 	public void testConvertListEntityToDTO_returnListDTODetails() {
 		//given
-		List<CakeEntity> cakeList = new ArrayList<>();
+		final List<CakeEntity> cakeList = new ArrayList<>();
 		cakeList.add(cakeDetails());
-		List<CakeDTO> cakeDtoList = new ArrayList<>();
+		final List<CakeDTO> cakeDtoList = new ArrayList<>();
 		cakeDtoList.add(cakeDetailsDTO());
 		given(cakeUtils.convertListEntityToDTO(cakeList)).willReturn(cakeDtoList);
 		

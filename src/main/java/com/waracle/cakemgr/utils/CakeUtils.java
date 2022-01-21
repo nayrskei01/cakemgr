@@ -25,7 +25,8 @@ public class CakeUtils {
 	 * @param cake
 	 * @return cakeDto details
 	 */
-	public CakeDTO convertEntityToDTO(CakeEntity cake) {
+	public CakeDTO convertEntityToDTO(
+		final CakeEntity cake) {
 		return mapper.map(cake, CakeDTO.class);
 	}
 	
@@ -35,7 +36,8 @@ public class CakeUtils {
 	 * @param cakes
 	 * @return list of CakeDTO
 	 */
-	public List<CakeDTO> convertListEntityToDTO(List<CakeEntity> cakes) {
+	public List<CakeDTO> convertListEntityToDTO(
+		final List<CakeEntity> cakes) {
 		return cakes.stream().map(cake -> convertEntityToDTO(cake))
 				.collect(Collectors.toList());
 	}
@@ -46,7 +48,8 @@ public class CakeUtils {
 	 * @param cakeDto
 	 * @return CakeEntity details
 	 */
-	public CakeEntity convertCakeDTOToEntity(CakeDTO cakeDto) {
+	public CakeEntity convertCakeDTOToEntity(
+		final CakeDTO cakeDto) {
 		return mapper.map(cakeDto, CakeEntity.class);
 	}
 }

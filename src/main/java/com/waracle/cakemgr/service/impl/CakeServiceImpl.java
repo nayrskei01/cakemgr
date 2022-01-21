@@ -31,7 +31,8 @@ import com.waracle.cakemgr.utils.CakeUtils;
 @Service
 public class CakeServiceImpl implements CakeService
 {
-	private static final Logger logger = LoggerFactory.getLogger(CakeServiceImpl.class);
+	private static final Logger logger =
+			LoggerFactory.getLogger(CakeServiceImpl.class);
 	
 	/**
 	 * Cake json url.
@@ -50,7 +51,10 @@ public class CakeServiceImpl implements CakeService
 	 */
 	@Autowired
 	private CakeUtils cakeUtils;
-	
+
+	/**
+	 * Object mapper.
+	 */
 	private ObjectMapper objectMapper = new ObjectMapper().configure(
             DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 	
@@ -61,13 +65,14 @@ public class CakeServiceImpl implements CakeService
 	 * @return CakeEntity
 	 */
 	@Override
-	public CakeDTO saveCake(CakeEntity cake)
+	public CakeDTO saveCake(final CakeEntity cake)
 	{
 		CakeDTO responseCake = null;
 		if (null != cake)
 		{
 			responseCake = cakeUtils.convertEntityToDTO(cakeRepository.save(cake));
-			logger.info("Saving cakes to Employee DB with ID = " + responseCake.getEmployeeId());
+			logger.info("Saving cakes to Employee DB with ID = "
+					+ responseCake.getEmployeeId());
 		}
 		return responseCake;
 	}
@@ -75,11 +80,11 @@ public class CakeServiceImpl implements CakeService
 	/**
 	 * Get cake details by id;
 	 * 
-	 * @param cake
+	 * @param id
 	 * @return CakeEntity
 	 */
 	@Override
-	public CakeDTO getCakeById(Integer id)
+	public CakeDTO getCakeById(final Integer id)
 	{
 		CakeDTO cakeDto = null;
 		logger.info("Fetch cake by ID = " + id);
@@ -103,7 +108,7 @@ public class CakeServiceImpl implements CakeService
 		List<CakeDTO> cakesDto = new ArrayList<>();
 		
 		logger.info("Fetching all cakes from Employee DB");
-		List<CakeEntity> cakes = cakeRepository.findAll();
+		final List<CakeEntity> cakes = cakeRepository.findAll();
 		
 		if (!cakes.isEmpty())
 		{
@@ -140,7 +145,8 @@ public class CakeServiceImpl implements CakeService
 		}
 	}
 	
-	private CompletableFuture<HttpResponse<String>> downloadCakeJson() throws Exception
+	private CompletableFuture<HttpResponse<String>>
+	   downloadCakeJson() throws Exception
 	{
 		var httpClient = HttpClient.newBuilder().build();
 		

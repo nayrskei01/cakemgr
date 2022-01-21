@@ -48,14 +48,16 @@ public class CakeController {
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<List<CakeFieldValidationMessage>>
-		saveCake(@RequestBody CakeDTO cakeDto) throws BindException {
+		saveCake(@RequestBody final CakeDTO cakeDto)
+		throws BindException {
 		CakeValidator validator = new CakeValidator();
 		
 		WebDataBinder binder = new WebDataBinder(cakeDto);
 		binder.setValidator(validator);
 		
 		// throws BindException if there are binding/validation
-		// errors, exception are handled using @ControllerAdvice CakeValidationErrorHandler
+		// errors, exception are handled using
+		// @ControllerAdvice CakeValidationErrorHandler
 		binder.validate();
 		binder.close();
 		
@@ -82,7 +84,9 @@ public class CakeController {
 	@RequestMapping(value = "/cake/{id}",
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<CakeDTO> displayCakeById(@PathVariable Integer id) {
+	public ResponseEntity<CakeDTO> displayCakeById(
+		@PathVariable final Integer id) {
+
 		CakeDTO response = cakeService.getCakeById(id);
 		if (null == response) {
 			return new ResponseEntity("Cannot find cake with ID",

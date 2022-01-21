@@ -8,7 +8,12 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class CakemgrApplication {
 
-	public static void main(String[] args) {
+	/**
+	 * Entry point for the Application.
+	 *
+	 * @param args
+	 */
+	public static void main(final String[] args) {
 		SpringApplication.run(CakemgrApplication.class, args);
 	}
 
