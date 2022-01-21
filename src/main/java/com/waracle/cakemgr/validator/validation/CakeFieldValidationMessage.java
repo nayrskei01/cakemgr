@@ -6,5 +6,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class CakeFieldValidationMessage {
+	/**
+	 * Message field.
+	 */
 	private String message;
 }

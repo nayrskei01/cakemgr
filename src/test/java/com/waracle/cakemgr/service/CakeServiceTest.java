@@ -4,12 +4,10 @@ import static org.assertj.core.api.BDDAssertions.then;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.assertj.core.api.BDDAssertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -69,10 +67,10 @@ public class CakeServiceTest {
 		saveCake.add(cakeDetails());
 		List<CakeDTO> cakeDto = new ArrayList<>();
 		cakeDto.add(cakeDetailsDTO());
-		given(cakeService.getAllcakes()).willReturn(cakeDto);
+		given(cakeService.getAllCakes()).willReturn(cakeDto);
 		
 		//when
-		List<CakeDTO> responseCake = cakeService.getAllcakes();
+		List<CakeDTO> responseCake = cakeService.getAllCakes();
 		
 		//then
 		then(responseCake).isNotNull();

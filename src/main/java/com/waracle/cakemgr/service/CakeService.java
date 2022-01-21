@@ -11,7 +11,7 @@ public interface CakeService {
 
 	CakeDTO getCakeById(Integer id);
 	
-	List<CakeDTO> getAllcakes();
+	List<CakeDTO> getAllCakes();
 	
 	void saveJsonFile();
 }

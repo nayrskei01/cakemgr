@@ -31,9 +31,11 @@ public class CakeValidationErrorHandler extends ResponseEntityExceptionHandler {
 				validationException
 				.getBindingResult()
 				.getFieldErrors().stream()
-				.map(fieldError -> new CakeFieldValidationMessage(fieldError.getDefaultMessage()))
+				.map(fieldError -> new CakeFieldValidationMessage(fieldError
+						.getDefaultMessage()))
 				.collect(Collectors.toList());
 		
-		return new ResponseEntity<>(validationErrors, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<>(validationErrors,
+				HttpStatus.BAD_REQUEST);
 	}
 }

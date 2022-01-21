@@ -22,9 +22,16 @@ import com.waracle.cakemgr.validator.validation.CakeValidator;
 
 @RestController
 public class CakeController {
+
+	/**
+	 * Cake service.
+	 */
 	@Autowired
 	private CakeService cakeService;
-	
+
+	/**
+	 * Cake utilities.
+	 */
 	@Autowired
 	private CakeUtils utils;
 	
@@ -40,7 +47,8 @@ public class CakeController {
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE )
-	public ResponseEntity<List<CakeFieldValidationMessage>> saveCake(@RequestBody CakeDTO cakeDto) throws BindException {
+	public ResponseEntity<List<CakeFieldValidationMessage>>
+		saveCake(@RequestBody CakeDTO cakeDto) throws BindException {
 		CakeValidator validator = new CakeValidator();
 		
 		WebDataBinder binder = new WebDataBinder(cakeDto);
@@ -51,7 +59,8 @@ public class CakeController {
 		binder.validate();
 		binder.close();
 		
-		CakeDTO response = cakeService.saveCake(utils.convertCakeDTOToEntity(cakeDto));
+		CakeDTO response = cakeService.saveCake(utils
+				.convertCakeDTOToEntity(cakeDto));
 		
 		return new ResponseEntity(response, HttpStatus.OK);
 	}
@@ -60,10 +69,11 @@ public class CakeController {
 			method = RequestMethod.GET,
 			produces = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<List<CakeDTO>> displayAllCakes() {
-		List<CakeDTO> response = cakeService.getAllcakes();
+		List<CakeDTO> response = cakeService.getAllCakes();
 		
 		if (response.isEmpty()) {
-			return new ResponseEntity("Empty cakes!", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity("Empty cakes!",
+					HttpStatus.BAD_REQUEST);
 		}
 		
 		return new ResponseEntity(response, HttpStatus.OK);
@@ -75,7 +85,8 @@ public class CakeController {
 	public ResponseEntity<CakeDTO> displayCakeById(@PathVariable Integer id) {
 		CakeDTO response = cakeService.getCakeById(id);
 		if (null == response) {
-			return new ResponseEntity("Cannot find cake with ID", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity("Cannot find cake with ID",
+					HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity(response, HttpStatus.OK);
 	}

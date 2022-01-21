@@ -7,11 +7,24 @@ import com.waracle.cakemgr.dto.CakeDTO;
 
 public class CakeValidator implements Validator {
 
+	/**
+	 * Initialize class.
+	 *
+	 * @param clazz
+	 * @return boolean
+	 */
 	@Override
 	public boolean supports(Class<?> clazz) {
 		return CakeDTO.class.isAssignableFrom(clazz);
 	}
 
+	/**
+	 * The supplied errors instance can be used.
+	 * to report any resulting validation errors.
+	 *
+	 * @param cakeObject
+	 * @param errors
+	 */
 	@Override
 	public void validate(Object cakeObject, Errors errors) {
 		CakeDTO cakeDto = (CakeDTO) cakeObject;
@@ -36,5 +49,4 @@ public class CakeValidator implements Validator {
 	private boolean isEmpty(String value) {
 		return null == value || value.length() == 0;
 	}
-
 }

@@ -11,16 +11,31 @@ import org.springframework.security.oauth2.provider.token.store.InMemoryTokenSto
 
 @EnableAuthorizationServer
 @Configuration
-public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfig
+		extends AuthorizationServerConfigurerAdapter {
+
+	/**
+	 * Configure for security.
+	 *
+	 * @param security
+	 */
 	@Override
-	public void configure(AuthorizationServerSecurityConfigurer security) {
+	public void configure(AuthorizationServerSecurityConfigurer
+									  security) {
 		security.passwordEncoder(NoOpPasswordEncoder.getInstance())
 		.checkTokenAccess("permitAll()")
 		.tokenKeyAccess("permitAll()");
 	}
-	
+
+	/**
+	 * Client configure details.
+	 *
+	 * @param clients
+	 * @throws Exception
+	 */
 	@Override
-	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+	public void configure(ClientDetailsServiceConfigurer clients)
+			throws Exception {
 		clients.inMemory()
 			.withClient("guest_app")
 			.scopes("READ_ALL_GUEST", "WRITE_GUEST", "UPDATE_GUEST")
@@ -36,9 +51,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 			.authorities("ROLE_GUEST_AUTHORIZED_CLIENT")
 			.authorizedGrantTypes("client_credentials");
 	}
-	
+
+	/**
+	 * Server endpoints configure.
+	 *
+	 * @param endpoints
+	 */
 	@Override
-	public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+	public void configure(AuthorizationServerEndpointsConfigurer
+									  endpoints) {
 		endpoints.tokenStore(new InMemoryTokenStore());
 	}
 }

@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "Employee", uniqueConstraints 
+@Table(name = "Employee", uniqueConstraints
 	= {@UniqueConstraint(columnNames = "ID"),
 			@UniqueConstraint(columnNames = "EMAIL")})
 public class CakeEntity {
@@ -33,13 +33,13 @@ public class CakeEntity {
 	/**
 	 * Cake title field.
 	 */
-    @Column(name = "EMAIL", unique = true, nullable = false, length = 100)
+    @Column(name = "EMAIL", unique = true, nullable = false)
     private String title;
 
     /**
      * Cake description field.
      */
-    @Column(name = "FIRST_NAME", unique = false, nullable = false, length = 100)
+    @Column(name = "FIRST_NAME", unique = false, nullable = false)
     private String desc;
 
     /**

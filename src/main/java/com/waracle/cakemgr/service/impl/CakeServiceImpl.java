@@ -98,7 +98,7 @@ public class CakeServiceImpl implements CakeService
 	 * @return list of CakeEntity
 	 */
 	@Override
-	public List<CakeDTO> getAllcakes()
+	public List<CakeDTO> getAllCakes()
 	{	
 		List<CakeDTO> cakesDto = new ArrayList<>();
 		
